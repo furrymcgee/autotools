@@ -6,12 +6,16 @@ AC_INIT([mumble], [1.5])
 AC_CONFIG_SRCDIR([])
 AM_INIT_AUTOMAKE
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIR([m4])
+
+AM_INIT_AUTOMAKE
+LT_INIT
+AC_SUBST([LIBTOOL_DEPS])
 
 # Checks for programs.
 AC_PROG_CC
 
 # Checks for libraries.
-AC_PROG_RANLIB
 
 # Checks for header files.
 
