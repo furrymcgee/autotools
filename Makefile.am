@@ -1,5 +1,6 @@
 NULL=
 ACLOCAL_AMFLAGS=-I m4
+SUBDIRS =
 
 EXTRA_PROGRAMS=	ntpq
 bin_PROGRAMS=	$(NTPQ_DB)
@@ -30,7 +31,8 @@ ntpq_SOURCES=	ntpq.c ntpq-subs.c ntpq-opts.c ntpq-opts.h
 noinst_HEADERS=	ntpq.h
 lib_LTLIBRARIES=	libntpq.la
 
-libntpq_la_CFLAGS=	$(AM_CFLAGS)
+libntpq_la_CFLAGS = ${MY_CFLAGS}
+# libntpq_la_CFLAGS=	$(AM_CFLAGS)
 libntpq_la_CFLAGS+=	-DNO_MAIN_ALLOWED -DBUILD_AS_LIB
 libntpq_la_CPPFLAGS=	$(AM_CPPFLAGS)
 libntpq_la_LDFLAGS=	$(AM_LDFLAGS)
