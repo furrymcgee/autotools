@@ -1,0 +1,4 @@
+puts "I am testboard.exp"
+#set_board_info nfsdir /tmp/nfs
+#set_board_info nfsroot_server 127.0.0.11
+set_board_info hostname 127.0.0.111

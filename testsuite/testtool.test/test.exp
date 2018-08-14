@@ -1,0 +1,10 @@
+puts [target_info name]
+puts [board_info testboard hostname]
+
+puts $objdir/../testtool
+testtool_load $objdir/../testtool
+set spawn_id [testtool_start]
+foreach test "testrun pass" {
+    testtool_test $test
+}
+

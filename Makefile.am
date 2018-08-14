@@ -1,40 +1,11 @@
-NULL=
-ACLOCAL_AMFLAGS=-I m4
-SUBDIRS =
+SUBDIRS = testsuite
 
-EXTRA_PROGRAMS=	ntpq
-bin_PROGRAMS=	$(NTPQ_DB)
-libexec_PROGRAMS=	$(NTPQ_DL)
-sbin_PROGRAMS=	$(NTPQ_DS)
+lib_LTLIBRARIES=libtestlib.la
+libtestlib_la_SOURCES = testlib.cpp
+libtesttool_la_CFLAGS = ${MY_CFLAGS}
 
-AM_CFLAGS = $(CFLAGS_NTP)
-AM_CFLAGS += $(NTP_HARD_CFLAGS)
-AM_CFLAGS += $(OPENSSL_CFLAGS)
-
-AM_CPPFLAGS  = $(NTP_INCS)
-AM_CPPFLAGS += $(LIBOPTS_CFLAGS)
-AM_CPPFLAGS += $(CPPFLAGS_NTP)
-AM_CPPFLAGS += $(NTP_HARD_CPPFLAGS)
-
-AM_LDFLAGS  = $(LDFLAGS_NTP)
-AM_LDFLAGS += $(NTP_HARD_LDFLAGS)
-AM_LDFLAGS += $(OPENSSL_LIBS)
-
-# LDADD might need RESLIB and ADJLIB
-ntpq_LDADD  = version.o $(LIBOPTS_LDADD)
-ntpq_LDADD += ../libntp/libntp.a $(LDADD_LIBNTP) $(LIBM)
-ntpq_LDADD += $(PTHREAD_LIBS) $(EDITLINE_LIBS)
-ntpq_LDADD += $(LDADD_NTP)
-ntpq_LDADD += $(NTP_HARD_LDFLAGS)
-ntpq_SOURCES=	ntpq.c ntpq-subs.c ntpq-opts.c ntpq-opts.h
-
-noinst_HEADERS=	ntpq.h
-lib_LTLIBRARIES=	libntpq.la
-
-libntpq_la_CFLAGS = ${MY_CFLAGS}
-# libntpq_la_CFLAGS=	$(AM_CFLAGS)
-libntpq_la_CFLAGS+=	-DNO_MAIN_ALLOWED -DBUILD_AS_LIB
-libntpq_la_CPPFLAGS=	$(AM_CPPFLAGS)
-libntpq_la_LDFLAGS=	$(AM_LDFLAGS)
-libntpq_la_SOURCES=	libntpq.c libntpq.h libntpq_subs.c
+bin_PROGRAMS = testtool
+testtool_SOURCES = testtool.cpp
+testtool_LDADD = libtestlib.la
+testtool_LDFLAGS = -no-install
 

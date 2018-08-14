@@ -1,0 +1,4 @@
+bc_start
+bc_test   "2+2"    "4"
+bc_test   "7*9"   "63"
+bc_test   "3-7"   "-4"

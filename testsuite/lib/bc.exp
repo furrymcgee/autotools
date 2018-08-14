@@ -1,0 +1,30 @@
+
+proc bc_load { arg } {
+	#
+}
+
+proc bc_start {} {
+	global spawn_id
+	spawn bc
+	sleep 1
+} 
+
+proc bc_exit {} {
+	send "quit\n"
+}
+
+proc bc_version {} {
+	return "unknown"
+}
+
+proc bc_test {expr result} {
+	send "$expr\n"
+	expect "$expr\r\n"
+	
+	expect {
+		-gl "$result\r\n" { pass "$expr" }
+		"*\r\n"           { fail "$expr" }
+		timeout           { fail "(timeout) $expr" }
+	}
+}
+

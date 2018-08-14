@@ -2,24 +2,14 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([mumble],[1.5])
-AM_INIT_AUTOMAKE
-AC_CONFIG_SRCDIR([])
+AC_INIT([testtool], [1.0.0], [BUG-REPORT-ADDRESS])
+AM_INIT_AUTOMAKE([])
+AC_CONFIG_SRCDIR([testtool.cpp])
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_MACRO_DIR([m4])
-AC_CONFIG_MACRO_DIRS([m4])
-# AX_REQUIRE_DEFINED([AX_APPEND_FLAG])
-# AC_USE_SYSTEM_EXTENSIONS
-# AM_GNU_GETTEXT([external])
-# AM_GNU_GETTEXT_VERSION([0.19.8])
-
-AM_INIT_AUTOMAKE
-AM_PROG_AR
 LT_INIT
-AC_SUBST([LIBTOOL_DEPS])
 
 # Checks for programs.
-AC_PROG_CC
+AC_PROG_CXX
 
 # Checks for libraries.
 
@@ -42,11 +32,11 @@ AC_RUN_IFELSE(
 			   AC_MSG_RESULT([???]) ],
 			  )
 
-# AX_APPEND_FLAG([-xxx], CPPFLAGS)
-AC_SUBST(MY_CFLAGS)
+## AX_APPEND_FLAG([-xxx], CPPFLAGS)
+## AC_SUBST(MY_CFLAGS)
 
 # Checks for library functions.
 
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile
+		testsuite/Makefile])
 AC_OUTPUT
-

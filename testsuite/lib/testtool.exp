@@ -1,0 +1,32 @@
+puts "I am testtool.exp"
+
+proc testtool_load { arg } {
+    global objdir
+    #puts $objdir
+    return [standard_download testboard $arg /tmp]
+}
+
+proc testtool_start {} {
+    return [standard_spawn [board_info testboard hostname] /tmp/testtool]
+} 
+
+proc testtool_exit {} {
+}
+
+proc testtool_version {} {
+}
+
+proc testtool_test {test } {
+	expect {
+        "PASSED: $test" {
+            pass $test
+        }
+        timeout {
+            fail "(timeout) $test"
+        }
+        eof {
+            fail "(timeout) $test"
+        }
+	}
+}
+
