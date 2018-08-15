@@ -8,4 +8,4 @@ bin_PROGRAMS = testtool
 testtool_SOURCES = testtool.cpp
 testtool_LDADD = libtestlib.la
 testtool_LDFLAGS = -no-install
-
+sysconf_DATA = README
