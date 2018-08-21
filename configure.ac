@@ -22,6 +22,7 @@ AC_TYPE_SIZE_T
 
 AC_LANG(C)
 AC_MSG_CHECKING([for the Android arm ABI])
+AC_CHECK_TYPE([int32_t])
 AC_RUN_IFELSE(
 			  [AC_LANG_PROGRAM([[int zzz;]], [[return zzz;]])], 
 			  [ MY_CFLAGS="-xxx"
